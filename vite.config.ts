@@ -7,6 +7,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.tsx'),
       name: 'LocalstorageQuery',
       fileName: 'localstorage-query',
+      formats: ['es'],
     },
     rollupOptions: {
       external: ['react'],
