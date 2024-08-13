@@ -1,10 +1,19 @@
 {
   "name": "root",
   "private": true,
-  "description": "",
+  "description": "LocalStorage를 좀 더 간편하게 사용하기 위해 만든 라이브러리입니다.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/confidential-nt/localstorage-query"
+  },
   "type": "module",
+  "keywords": [
+    "react",
+    "localstorage"
+  ],
   "scripts": {
     "lib:build": "pnpm -F @confidential-nt/localstorage-query build",
+    "lib:publish": "pnpm -F @confidential-nt/localstorage-query publish --access=public",
     "app:dev": "pnpm -F app dev"
   },
   "author": "confidential-nt",
