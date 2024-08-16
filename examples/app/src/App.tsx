@@ -1,6 +1,7 @@
 import useLocalstorageQuery from '@confidential-nt/localstorage-query';
 import { FormEvent, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import styles from './App.module.css';
 
 type TodoItem = {
   title: string;
@@ -18,7 +19,7 @@ export default function App() {
       completed: false,
       id: uuid,
     },
-  ]);
+  ]); // key에 해당하는 값이 로컬 스토리지에 없을 경우, 주어진 initial value로 즉시 초기화됩니다. 그렇지 않은 경우 무시됩니다.
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -56,26 +57,37 @@ export default function App() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Type Todo..." ref={inputRef} />
-      </form>
-      <ul>
-        {data &&
-          data.length > 0 &&
-          data.map((d) => (
-            <li key={d.id}>
-              {d.title}{' '}
-              <input
-                type="checkbox"
-                checked={d.completed}
-                onChange={() => handleCheck(d)}
-              />
-              <button onClick={() => handleDelete(d.id)}>Delete</button>
-            </li>
-          ))}
-      </ul>
-      <button onClick={() => remove()}>Delete All Todos</button>
-    </>
+    <main>
+      <h1>Example</h1>
+      <div className={styles.container}>
+        <div>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <input type="text" placeholder="Type Todo..." ref={inputRef} />
+          </form>
+          <ul className={styles.items}>
+            {data &&
+              data.length > 0 &&
+              data.map((d) => (
+                <li key={d.id} className={styles.item}>
+                  <div>
+                    <span>{d.title} </span>
+                    <div>
+                      <input
+                        type="checkbox"
+                        checked={d.completed}
+                        onChange={() => handleCheck(d)}
+                      />
+                      <button onClick={() => handleDelete(d.id)}>Delete</button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+          </ul>
+          <button className={styles.deleteAllBtn} onClick={() => remove()}>
+            Delete All Todos
+          </button>
+        </div>
+      </div>
+    </main>
   );
 }

@@ -1,0 +1,74 @@
+.container {
+  padding: 1rem;
+  height: 60vh;
+  width: 50vw;
+  max-width: 50vw;
+  border: 1px solid tomato;
+  position: relative;
+}
+
+.container > div {
+  height: 100%;
+  /* overflow: auto; */
+  overflow: hidden;
+}
+
+.container button {
+  background-color: dodgerblue;
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.form {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.form input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid tomato;
+}
+
+.form input::placeholder {
+  font-size: 1.2rem;
+}
+
+.items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  height: 100%;
+  padding: 1rem 0 5rem 0;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid tomato;
+  border-top: 1px solid tomato;
+  padding: 0.5rem 0;
+}
+
+.item > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+
+.item button {
+  margin-left: 1rem;
+}
+
+.deleteAllBtn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
