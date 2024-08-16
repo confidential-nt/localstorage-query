@@ -15,6 +15,7 @@
     "dist"
   ],
   "module": "./dist/localstorage-query.js",
+  "main": "./dist/localstorage-query.js",
   "exports": {
     ".": {
       "import": "./dist/localstorage-query.js",
