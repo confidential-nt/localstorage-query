@@ -14,7 +14,8 @@
   "scripts": {
     "lib:build": "pnpm -F @confidential-nt/localstorage-query build",
     "lib:publish": "pnpm -F @confidential-nt/localstorage-query publish --access=public",
-    "app:dev": "pnpm -F app dev"
+    "app:dev": "pnpm -F app dev",
+    "app:build": "pnpm -F app build"
   },
   "author": "confidential-nt",
   "license": "MIT"

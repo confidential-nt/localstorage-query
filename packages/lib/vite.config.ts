@@ -12,5 +12,6 @@ export default defineConfig({
     rollupOptions: {
       external: ['react'],
     },
+    emptyOutDir: false,
   },
 });

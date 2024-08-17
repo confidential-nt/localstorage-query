@@ -15,7 +15,6 @@
     "dist"
   ],
   "module": "./dist/localstorage-query.js",
-  "main": "./dist/localstorage-query.js",
   "exports": {
     ".": {
       "import": "./dist/localstorage-query.js",
@@ -25,7 +24,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc -b",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
