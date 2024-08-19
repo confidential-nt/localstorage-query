@@ -7,7 +7,9 @@ export default function useLocalstorageQuery<T = undefined>(
   const [data, setData] = useState<T | null>();
 
   const stringifiedInitialValue =
-    initialValue !== undefined ? JSON.stringify(initialValue) : 'undefined';
+    initialValue !== undefined
+      ? JSON.stringify(initialValue)
+      : JSON.stringify('undefined');
 
   useEffect(() => {
     const value = localStorage.getItem(key);
@@ -17,13 +19,13 @@ export default function useLocalstorageQuery<T = undefined>(
       return;
     }
 
-    if (stringifiedInitialValue !== 'undefined') {
+    if (stringifiedInitialValue !== JSON.stringify('undefined')) {
       localStorage.setItem(key, stringifiedInitialValue);
       setData(JSON.parse(stringifiedInitialValue));
       return;
     }
 
-    localStorage.setItem(key, 'undefined');
+    localStorage.setItem(key, JSON.stringify('undefined'));
   }, [key, stringifiedInitialValue]);
 
   const mutate = (newValue: T) => {
