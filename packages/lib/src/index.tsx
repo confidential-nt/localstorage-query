@@ -13,9 +13,20 @@ export default function useLocalstorageQuery<T = undefined>(
 
   useEffect(() => {
     const value = localStorage.getItem(key);
-    if (value !== null) {
+
+    const notNullValueAndNotUndefined =
+      value !== null && value !== JSON.stringify('undefined');
+
+    if (notNullValueAndNotUndefined) {
       const parsed = JSON.parse(value);
       setData(parsed);
+      return;
+    }
+
+    const notNullValueButUndefined =
+      value !== null && value === JSON.stringify('undefined');
+
+    if (notNullValueButUndefined) {
       return;
     }
 
@@ -30,8 +41,14 @@ export default function useLocalstorageQuery<T = undefined>(
 
   const mutate = (newValue: T) => {
     const value = localStorage.getItem(key);
+
+    const stringifiedNewValue =
+      newValue === undefined
+        ? JSON.stringify('undefined')
+        : JSON.stringify(newValue);
+
     if (value !== null) {
-      localStorage.setItem(key, JSON.stringify(newValue));
+      localStorage.setItem(key, stringifiedNewValue);
       setData(newValue);
     }
   };
