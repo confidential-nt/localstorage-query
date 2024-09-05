@@ -1,6 +1,6 @@
 {
   "name": "@confidential-nt/localstorage-query",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "LocalStorage를 좀 더 간편하게 사용하기 위해 만든 라이브러리입니다.",
   "repository": {
     "type": "git",
