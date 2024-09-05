@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function useLocalstorageQuery<T = undefined>(
   key: string,
@@ -62,27 +62,30 @@ export default function useLocalstorageQuery<T = undefined>(
     value,
   ]);
 
-  const mutate = (newValue: T) => {
-    const value = localStorage.getItem(key);
+  const mutate = useCallback(
+    (newValue: T) => {
+      const value = localStorage.getItem(key);
 
-    const stringifiedNewValue =
-      newValue === undefined
-        ? JSON.stringify('undefined')
-        : JSON.stringify(newValue);
+      const stringifiedNewValue =
+        newValue === undefined
+          ? JSON.stringify('undefined')
+          : JSON.stringify(newValue);
 
-    if (value !== null) {
-      localStorage.setItem(key, stringifiedNewValue);
-      setData(newValue);
-    }
-  };
+      if (value !== null) {
+        localStorage.setItem(key, stringifiedNewValue);
+        setData(newValue);
+      }
+    },
+    [key]
+  );
 
-  const remove = () => {
+  const remove = useCallback(() => {
     const value = localStorage.getItem(key);
     if (value !== null) {
       localStorage.removeItem(key);
       setData(null);
     }
-  };
+  }, [key]);
 
   return {
     data,
