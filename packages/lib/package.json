@@ -1,6 +1,6 @@
 {
   "name": "@confidential-nt/localstorage-query",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "LocalStorage를 좀 더 간편하게 사용하기 위해 만든 라이브러리입니다.",
   "repository": {
     "type": "git",
@@ -25,10 +25,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "test": "vitest --watch=false",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
     "react": "^18.3.1"
   },
   "peerDependencies": {
@@ -44,6 +47,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "jsdom": "^25.0.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.0",
     "vite": "^5.4.0",
