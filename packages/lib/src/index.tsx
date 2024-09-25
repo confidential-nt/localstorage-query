@@ -30,6 +30,8 @@ export default function useLocalstorageQuery<T = undefined>(
   const notNullValueButUndefined =
     value !== null && value === JSON.stringify('undefined');
 
+  const deleted = value === null && data === null;
+
   warnIfLocalStorageKeyExists(
     notNullValueAndNotUndefined,
     notNullValueButUndefined,
@@ -37,6 +39,10 @@ export default function useLocalstorageQuery<T = undefined>(
   );
 
   useEffect(() => {
+    if (deleted) {
+      return;
+    }
+
     if (notNullValueAndNotUndefined) {
       const parsed = JSON.parse(value);
       setData(parsed);
@@ -59,6 +65,7 @@ export default function useLocalstorageQuery<T = undefined>(
     notNullValueAndNotUndefined,
     notNullValueButUndefined,
     stringifiedInitialValue,
+    deleted,
     value,
   ]);
 
