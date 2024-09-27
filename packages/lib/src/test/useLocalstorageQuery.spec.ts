@@ -37,19 +37,19 @@ describe('useLocalStorageQuery Hook', () => {
         expect(result.current.data).toBe('stored');
       });
 
+      test('이미 key에 대한 value가 없을 때 data는 초기값이어야 한다', () => {
+        const { result } = renderHook(() =>
+          useLocalstorageQuery('key', 'initial')
+        );
+        expect(result.current.data).toBe('initial');
+      });
+
       test('이미 key에 대한 value가 있는데 value가 undefined일때 data는 undefined 여야한다', () => {
         localStorage.setItem('key', JSON.stringify('undefined'));
         const { result } = renderHook(() =>
           useLocalstorageQuery('key', 'initial')
         );
         expect(result.current.data).toBe(undefined);
-      });
-
-      test('이미 key에 대한 value가 없을 때 data는 초기값이어야 한다', () => {
-        const { result } = renderHook(() =>
-          useLocalstorageQuery('key', 'initial')
-        );
-        expect(result.current.data).toBe('initial');
       });
     });
 
@@ -61,6 +61,12 @@ describe('useLocalStorageQuery Hook', () => {
       });
 
       test('이미 key에 대한 value가 없을 때 data는 undefined 여야 한다', () => {
+        const { result } = renderHook(() => useLocalstorageQuery('key'));
+        expect(result.current.data).toBe(undefined);
+      });
+
+      test('이미 key에 대한 value가 있는데 value가 undefined일때 data는 undefined 여야한다', () => {
+        localStorage.setItem('key', JSON.stringify('undefined'));
         const { result } = renderHook(() => useLocalstorageQuery('key'));
         expect(result.current.data).toBe(undefined);
       });
