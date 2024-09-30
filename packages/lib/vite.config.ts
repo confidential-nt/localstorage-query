@@ -15,7 +15,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', /test/],
+      external: ['react'],
     },
     emptyOutDir: false,
   },
