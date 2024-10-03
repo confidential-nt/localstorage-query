@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main # main 브랜치에 push될 때만 실행 (원하는 브랜치로 변경 가능)
+    paths:
+      - 'packages/lib/**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repository
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 2. Set up Node.js (npm is included with Node.js)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # 원하는 Node.js 버전으로 설정 가능
+          cache: 'npm' # 캐시를 이용해 빌드 속도 향상
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Run semantic-release
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} # GitHub 토큰 자동 제공
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # NPM 배포를 위한 NPM 토큰
+        run: npx semantic-release
+        working-directory: packages/lib
