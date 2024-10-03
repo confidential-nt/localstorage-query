@@ -21,11 +21,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20' # 원하는 Node.js 버전으로 설정 가능
-          cache: 'npm' # 캐시를 이용해 빌드 속도 향상
+          cache: 'pnpm' # 캐시를 이용해 빌드 속도 향상
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       # 3. Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
       # 4. Run semantic-release
       - name: Run semantic-release
