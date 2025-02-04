@@ -1,5 +1,7 @@
 # LocalStorage Query
 
+[If you want to read the English version of the documentation, click this link.](https://github.com/confidential-nt/localstorage-query/blob/main/docs/README_EN.md)
+
 ## 설명
 
 로컬 스토리지를 좀 더 간편하게 사용하기 위해 만든 라이브러리입니다.
