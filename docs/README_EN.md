@@ -2,13 +2,13 @@
 
 ## Description
 
-A library designed to make working with local storage more convenient.
+A library designed to make working with localStorage more convenient.
 
 ## Features
 
-- Retrieve values from local storage
-- Modify or delete values in local storage
-- Instantly create and initialize a key-value pair in local storage (only if the key does not already exist)
+- Retrieve values from localStorage
+- Modify or delete values in localStorage
+- Instantly create and initialize a key-value pair in localStorage (only if the key does not already exist)
 
 ## Usage
 
@@ -32,7 +32,7 @@ function App() {
       completed: false,
       id: "1",
     },
-  ]); // If the specified key does not exist in local storage, it will be initialized with the given initial value. Otherwise, it will be ignored.
+  ]); // If the specified key does not exist in localStorage, it will be initialized with the given initial value. Otherwise, it will be ignored.
 
   // ... do something
 }
@@ -56,7 +56,7 @@ export default function App() {
       completed: false,
       id: "1",
     },
-  ]); // If the specified key does not exist in local storage, it will be initialized with the given initial value. Otherwise, it will be ignored.
+  ]); // If the specified key does not exist in localStorage, it will be initialized with the given initial value. Otherwise, it will be ignored.
 
   // ... do something
 }
@@ -78,8 +78,8 @@ useLocalstorageQuery(key, initialValue);
 
 ### Parameters
 
-- `key`: The key to use in local storage.
-- `initialValue` (optional): The initial value to set for the given key if it does not already exist in local storage. If the key exists, the initial value will be ignored.
+- `key`: The key to use in localStorage.
+- `initialValue` (optional): The initial value to set for the given key if it does not already exist in localStorage. If the key exists, the initial value will be ignored.
 
 ### Return Value
 
@@ -89,6 +89,6 @@ Returns the following object:
 const { data, mutate, remove } = useLocalstorageQuery(key);
 ```
 
-- `data`: Returns the value stored in local storage.
+- `data`: Returns the value stored in localStorage.
 - `mutate(newData)`: A function to update the stored value. Pass the new data as a parameter. **Make sure to maintain immutability.**
 - `remove()`: A function to completely remove the stored value associated with the key.
