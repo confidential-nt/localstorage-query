@@ -1,11 +1,12 @@
 name: Release
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     paths:
-      - 'packages/lib/**'
+      - "packages/lib/**"
 
 jobs:
   release:
@@ -20,8 +21,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-          cache: 'pnpm'
+          node-version: "20"
+          cache: "pnpm"
       # 3. Install pnpm
       - name: Install pnpm
         run: npm install -g pnpm
