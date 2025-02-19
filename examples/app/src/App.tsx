@@ -1,7 +1,7 @@
-import useLocalstorageQuery from '@confidential-nt/localstorage-query';
-import { FormEvent, useRef } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import styles from './App.module.css';
+import useLocalstorageQuery from "@confidential-nt/localstorage-query";
+import { FormEvent, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
+import styles from "./App.module.css";
 
 type TodoItem = {
   title: string;
@@ -9,19 +9,20 @@ type TodoItem = {
   id: string;
 };
 
-const key = 'todo';
+const key = "todo";
 const uuid = uuidv4(); // 매 렌더링마다 새롭게 생성되는 요소가 없도록 유의해야 합니다. 그렇지 않으면 내부적으로 무한 리렌더링이 일어나게 됩니다.
 
 export default function App() {
   const { data, mutate, remove } = useLocalstorageQuery<TodoItem[]>(key, [
     {
-      title: '밥먹기',
+      title: "밥먹기",
       completed: false,
       id: uuid,
     },
   ]); // key에 해당하는 값이 로컬 스토리지에 없을 경우, 주어진 initial value로 즉시 초기화됩니다. 그렇지 않은 경우 무시됩니다.
 
   const inputRef = useRef<HTMLInputElement>(null);
+  console.log("add some feature");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ export default function App() {
         id: uuidv4(),
       };
       mutate([...data, newTodo]); // CRUD 모든 작업에 mutate 함수를 사용할 수 있습니다. 다만, 불변성을 유지하도록 하세요.
-      inputRef.current.value = '';
+      inputRef.current.value = "";
     }
   };
 
