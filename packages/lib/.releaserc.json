@@ -1,0 +1,83 @@
+{
+  "branches": ["main", "next"],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "releaseRules": [
+          { "scope": "breaking", "release": "major" },
+          { "scope": "no-release", "release": false },
+          { "type": "build", "release": false },
+          { "type": "chore", "release": false },
+          { "type": "ci", "release": false },
+          { "type": "docs", "release": "patch" },
+          { "type": "feat", "release": "minor" },
+          { "type": "fix", "release": "patch" },
+          { "type": "perf", "release": "patch" },
+          { "type": "refactor", "release": "patch" },
+          { "type": "revert", "release": "patch" },
+          { "type": "style", "release": "patch" },
+          { "type": "test", "release": false }
+        ],
+        "parserOpts": {
+          "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"]
+        }
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            {
+              "type": "build",
+              "section": "SYSTEM BUILD & EXTERNAL PACKAGES",
+              "hidden": true
+            },
+            { "type": "chore", "section": "CHORES", "hidden": true },
+            { "type": "ci", "section": "CI/CD", "hidden": true },
+            { "type": "docs", "section": "DOCS", "hidden": false },
+            { "type": "feat", "section": "FEATURES", "hidden": false },
+            { "type": "fix", "section": "BUG FIXES", "hidden": false },
+            { "type": "perf", "section": "PERFORMANCE", "hidden": false },
+            { "type": "refactor", "section": "REFACTOR", "hidden": false },
+            { "type": "revert", "section": "REVERTS", "hidden": false },
+            { "type": "style", "section": "STYLES", "hidden": false },
+            { "type": "test", "section": "TESTS", "hidden": true }
+          ]
+        },
+        "parserOpts": {
+          "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"]
+        },
+        "writerOpts": {
+          "commitsSort": ["subject", "scope"]
+        }
+      }
+    ],
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md",
+        "changelogTitle": "# CHANGELOG"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": ".",
+        "tarball": "dist"
+      }
+    ],
+
+    "@semantic-release/github",
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ]
+  ]
+}
