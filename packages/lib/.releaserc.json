@@ -1,5 +1,6 @@
 {
   "branches": ["main", "next"],
+  "repositoryUrl": "https://github.com/confidential-nt/localstorage-query",
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
