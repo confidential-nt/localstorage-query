@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "20"
-          cache: "pnpm"
+          # cache: "pnpm"
       # 3. Install pnpm
       - name: Install pnpm
         run: npm install -g pnpm
