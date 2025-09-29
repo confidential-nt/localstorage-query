@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [0.3.3](https://github.com/confidential-nt/localstorage-query/compare/v0.3.2...v0.3.3) (2025-09-29)
+
+### DOCS
+
+* README.md 수정 ([d532f7d](https://github.com/confidential-nt/localstorage-query/commit/d532f7d9f5c4d3e83663195bf6b7c1e1f035a02c))
+
 ## [0.3.2](https://github.com/confidential-nt/localstorage-query/compare/v0.3.1...v0.3.2) (2025-02-19)
 
 ### DOCS
