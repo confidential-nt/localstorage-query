@@ -6,6 +6,7 @@ on:
     branches: ['main', 'next']
     paths:
       - 'packages/lib/**'
+      - '.github/workflows/**'
 
 jobs:
   release:
